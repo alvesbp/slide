@@ -140,6 +140,21 @@ export default class Slide {
     this.addSlideEvents();
     this.slidesConfig();
     this.addResizeEvent();
+    this.changeSlide(0);
     return this;
+  }
+}
+
+export class SlideNav extends Slide {
+  addArrow(prev, next) {
+    this.prevElement = document.querySelector(prev);
+    this.nextElement = document.querySelector(next);
+
+    this.prevElement.addEventListener("click", () =>
+      this.changeSlide(this.index.prev)
+    );
+    this.nextElement.addEventListener("click", () =>
+      this.changeSlide(this.index.next)
+    );
   }
 }
